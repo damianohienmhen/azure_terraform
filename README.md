@@ -12,11 +12,10 @@ This repository contains an example of deploying and managing [Kubernetes](https
 
 
 ## Quick start
-**Prerequisite:** make sure you're authenticated to GCP via [gcloud](https://cloud.google.com/sdk/gcloud/) command line tool using either _default application credentials_ or _service account_ with proper access.
 
-Check **terraform.tfvars.example** file inside `my-cluster` folder to see what variables you need to define before you can use terraform to create a cluster.
+Check **terraform.tfvars.example** file inside `environments/prod` folder to see what variables you need to define before you can use terraform to create a cluster.
 
-You can run the following command in `my-cluster` to make your variables definitions available to terraform:
+You can run the following command in `environments/prod` to make your variables definitions available to terraform:
 ```bash
 $ mv terraform.tfvars.example terraform.tfvars # variables defined in terraform.tfvars will be automatically picked up by terraform during the run
 ```
@@ -53,13 +52,6 @@ azure-terraform/
 
 ### terraform-modules
 The folder contains reusable pieces of terraform code which help us manage our configuration more efficiently by avoiding code repetition and reducing the volume of configuration.
-
-The folder contains 4 modules at the moment of writing:
-
-* `cluster` module allows to create new Kubernetes clusters.
-* `firewall/ingress-allow` module allows to create firewall rules to filter incoming traffic.
-* `node-pool` module is used to create [Node Pools](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pools) which is mechanism to add extra nodes of required configuration to a running Kubernetes cluster. Note that nodes which configuration is specified in the `cluster` module become the _default_ node pool.  
-* `vpc` module is used to create new Virtual Private Cloud (VPC) networks.
 
 ### network
 Inside the **network** folder, I put terraform configuration for the creation and management of an example of Kubernetes cluster.
